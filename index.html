@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plainsight — deniable words, honest limits</title>
+<meta name="description" content="A deniability primitive and a rights lifeline for people whose messages are watched. It hides a short message in mundane words. It is NOT a shield against a compromised device — that wall is stated plainly.">
+<style>
+  :root{
+    --bg:#0e1014; --panel:#171a20; --panel2:#1e222b; --line:#2c313c;
+    --ink:#e9edf3; --dim:#909aa8; --accent:#8fd3ff; --bad:#ff6b6b; --warn:#ffcc4d; --good:#5fd39a;
+    --wall:#ff7a7a; --chip:#1d222c; --mono:ui-monospace,SFMono-Regular,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,Segoe UI,Roboto,sans-serif;padding:0 0 4rem}
+  .wrap{max-width:800px;margin:0 auto;padding:0 1.25rem}
+  header{padding:2.4rem 0 1rem}
+  h1{font-size:1.8rem} h1 .hl{color:var(--accent)}
+  .sub{color:var(--dim);margin-top:.5rem}
+  h2{font-size:1.1rem;margin:1.8rem 0 .7rem}
+  .wallbox{background:#2a1416;border:1px solid var(--wall);border-left:5px solid var(--wall);border-radius:10px;padding:1.1rem 1.3rem;margin:1.4rem 0}
+  .wallbox h2{margin:0 0 .5rem;color:var(--wall)}
+  .wallbox p{color:#ffd9d9;font-size:.95rem}
+  .wallbox a{color:#fff}
+  .rights{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:1rem 1.2rem}
+  .rights li{margin:.4rem 0 .4rem 1.1rem;color:var(--dim);font-size:.92rem}
+  .rights b{color:var(--ink)}
+  .tools{display:flex;gap:.6rem;flex-wrap:wrap;margin:.6rem 0}
+  .tools a{background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;color:var(--accent);text-decoration:none;font-size:.85rem}
+  .demo{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:1.1rem;margin:.6rem 0}
+  .demo label{display:block;font-size:.82rem;color:var(--dim);margin:.5rem 0 .15rem}
+  .demo input,.demo textarea{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.5rem .7rem;font:.92rem var(--mono)}
+  .demo textarea{min-height:3rem;resize:vertical}
+  .demo .row{display:flex;gap:.7rem;flex-wrap:wrap}
+  .demo .row>div{flex:1;min-width:180px}
+  button{background:var(--accent);color:#04121e;border:0;border-radius:8px;padding:.55rem 1.1rem;font-weight:700;cursor:pointer;margin-top:.6rem}
+  button.ghost{background:var(--chip);color:var(--dim);border:1px solid var(--line)}
+  button:hover{filter:brightness(1.1)}
+  .carrier{background:var(--bg);border:1px dashed var(--line);border-radius:8px;padding:.7rem .9rem;margin-top:.6rem;font:.95rem var(--mono);color:var(--ink);word-break:break-word;min-height:2rem}
+  .out{font:.9rem var(--mono);margin-top:.5rem;color:var(--dim)}
+  .out .ok{color:var(--good)} .out .no{color:var(--bad)}
+  .caveat{font-size:.8rem;color:var(--warn);margin-top:.5rem}
+  footer{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--line);color:var(--dim);font-size:.85rem}
+  footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Plainsight <span class="hl">·</span> deniable words, honest limits</h1>
+  <p class="sub">For someone whose messages are watched. It hides a short message inside ordinary words, reversible only with a shared key — so a monitor sees mundane chatter, and a wrong key reveals a different, equally-plausible message. This is a deniability primitive and a rights lifeline. It is <strong>not</strong> a shield. Read the wall first.</p>
+</header>
+
+<div class="wallbox">
+  <h2>⚠ The wall — read this before you trust anything</h2>
+  <p><strong>No software can protect a phone that is already infected.</strong> Spyware that owns the device (Pegasus and its kind) reads your screen, your keystrokes and your microphone <em>before</em> any encryption happens. Nothing on this page — or in any app — defeats that. If your life may depend on it, do not type the real thing on a watched device: use a separate, trusted device, and use audited tools built for this by people who do it full-time:</p>
+  <div class="tools">
+    <a href="https://signal.org" rel="noopener">Signal (encrypted messaging)</a>
+    <a href="https://www.torproject.org" rel="noopener">Tor Browser</a>
+    <a href="https://www.accessnow.org/help/" rel="noopener">Access Now Digital Security Helpline</a>
+  </div>
+  <p style="margin-top:.6rem">Plainsight buys a little cover for the <em>text</em> of a short message; it does not make you safe. A determined analyst can still flag hidden messages. Treat "it looks mundane" as buying time, never as protection.</p>
+</div>
+
+<h2>Your rights (they hold everywhere — Universal Declaration of Human Rights)</h2>
+<div class="rights">
+  <ul>
+    <li><b>Article 3</b> — everyone has the right to life, liberty and security of person.</li>
+    <li><b>Article 5</b> — no one shall be subjected to torture or to cruel, inhuman or degrading treatment.</li>
+    <li><b>Article 9</b> — no one shall be subjected to arbitrary arrest, detention or exile.</li>
+    <li><b>Article 12</b> — no one shall be subjected to arbitrary interference with their privacy, family, home or correspondence.</li>
+    <li><b>Article 19</b> — everyone has the right to freedom of opinion and expression, and to seek, receive and impart information through any media, regardless of frontiers.</li>
+  </ul>
+  <p style="color:var(--dim);font-size:.85rem;margin-top:.4rem">The UDHR is a public-domain UN declaration. This page stores nothing and identifies no one — everything below runs in your browser and is never sent anywhere.</p>
+</div>
+
+<h2>Deniable encoder (a demonstration — mind the wall)</h2>
+<div class="demo">
+  <label>your short message</label>
+  <textarea id="secret">meet at the north gate at nine</textarea>
+  <div class="row">
+    <div><label>shared key (agree it in person, never send it)</label><input id="key" type="text" value="our-key"></div>
+  </div>
+  <button id="hide">hide it in plain words</button>
+  <label style="margin-top:.8rem">what a monitor would see (the "seed data")</label>
+  <div class="carrier" id="carrier"></div>
+  <div class="out" id="mundane"></div>
+  <div class="caveat">This is a code, not strong encryption: it gives deniability and mundane cover, not secrecy against experts.</div>
+</div>
+<div class="demo">
+  <label>reveal — paste a carrier and a key</label>
+  <textarea id="rcarrier"></textarea>
+  <div class="row"><div><label>key</label><input id="rkey" type="text" value="our-key"></div></div>
+  <button id="reveal">reveal</button>
+  <button class="ghost" id="wrong">try a wrong key (see deniability)</button>
+  <div class="out" id="revealed"></div>
+</div>
+
+<footer>
+  <p>MIT · <a href="https://github.com/sjgant80-hub/plainsight">source &amp; mutation gate</a> — the encoder is the gated <code>kernel.mjs</code> verbatim (20/20, injected, CI-diffed). Pure client-side: no network, no storage, nothing leaves your device. Rights layer informed by <a href="https://github.com/sjgant80-hub/fall-remember">the estate's rights corpus</a> (UDHR).</p>
+</footer>
+</div>
+
+<script type="module">
+// ⟦KERNEL-BEGIN⟧ generated from kernel.mjs by make-page.mjs — do not edit here
+// plainsight — deniable cover encoding. Hide a short message in plain, mundane text.
+//
+// FOR SOMEONE WHOSE TRAFFIC IS WATCHED. It turns a short secret into innocuous everyday
+// chatter (the "seed data" a monitor captures), reversible only with a key. Without the key
+// the carrier is just plausible words; a WRONG key yields a different, equally-plausible
+// message — so which reading is "real" cannot be proven. That last property is the point:
+// deniability, not unbreakable secrecy.
+//
+// ⚑⚑ THE HARD WALL — READ THIS. This defends against capture and inspection of the MESSAGE
+// TEXT in transit. It does NOTHING against a compromised device: spyware that owns the phone
+// reads the screen, the keystrokes and the mic BEFORE any of this runs. No software defeats an
+// owned device. For anything life-critical use audited tools (Signal, Tor, Tella) on a device
+// you trust — this is a deniability primitive and a lifeline, never a shield. A determined
+// statistical analyst can also flag stego; treat "looks mundane" as buying time, not safety.
+//
+// Pure and total; guards one-per-line. No network, no storage — it computes and returns.
+
+// 16 mundane cover words — a carrier reads as ordinary chatter. Each encodes one 4-bit nibble.
+const COVER = Object.freeze(['the', 'and', 'today', 'weather', 'tea', 'market', 'fine', 'later', 'home', 'work', 'tired', 'soon', 'maybe', 'yes', 'okay', 'thanks']);
+
+// Keyed order of the cover words (a deterministic shuffle from the key). The key permutes which
+// word means which nibble, so the SAME carrier decodes differently under a different key — the
+// source of deniability. FNV-seeded LCG, stable and total.
+function keyedOrder(key) {
+  if (typeof key !== 'string') return { ok: false, why: 'key must be a string' };
+  if (key.length === 0) return { ok: false, why: 'key must be non-empty' };
+  let h = 0x811c9dc5;
+  for (let i = 0; i < key.length; i++) { h ^= key.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+  let s = h >>> 0;
+  const order = COVER.slice();
+  for (let i = order.length - 1; i >= 1; i--) {          // Fisher-Yates, keyed
+    s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+    const j = s % (i + 1);
+    const t = order[i]; order[i] = order[j]; order[j] = t;
+  }
+  return { ok: true, order };
+}
+
+// secret string -> carrier (mundane words). Each UTF-16 byte becomes two cover words.
+function conceal(secret, key) {
+  if (typeof secret !== 'string') return { ok: false, why: 'secret must be a string' };
+  if (secret.length === 0) return { ok: false, why: 'secret must be non-empty' };
+  const ko = keyedOrder(key);
+  if (!ko.ok) return { ok: false, why: ko.why };
+  const order = ko.order;
+  const bytes = [];
+  for (let i = 0; i < secret.length; i++) {
+    const code = secret.charCodeAt(i);
+    if (code > 255) return { ok: false, why: 'this carrier encodes byte-range (0-255) characters; character ' + i + ' is outside it' };
+    bytes.push(code);
+  }
+  const words = [];
+  for (const b of bytes) { words.push(order[(b >> 4) & 15]); words.push(order[b & 15]); }
+  return { ok: true, carrier: words.join(' ') };
+}
+
+// carrier -> secret, under a key. A wrong key yields a different (plausible-or-garbled) result;
+// it never throws. Words not in the cover set are refused (a real carrier is only cover words).
+function reveal(carrier, key) {
+  if (typeof carrier !== 'string') return { ok: false, why: 'carrier must be a string' };
+  const ko = keyedOrder(key);
+  if (!ko.ok) return { ok: false, why: ko.why };
+  const idx = new Map(ko.order.map((w, i) => [w, i]));
+  const words = carrier.trim().split(/\s+/).filter((w) => w.length > 0);
+  if (words.length === 0) return { ok: false, why: 'carrier is empty' };
+  if (words.length % 2 !== 0) return { ok: false, why: 'a carrier has an even number of words (two per byte)' };
+  for (const w of words) { if (!idx.has(w)) return { ok: false, why: 'carrier contains a non-cover word: "' + w + '"' }; }
+  let out = '';
+  for (let i = 0; i < words.length; i += 2) {
+    const hi = idx.get(words[i]);
+    const lo = idx.get(words[i + 1]);
+    out += String.fromCharCode((hi << 4) | lo);
+  }
+  return { ok: true, secret: out };
+}
+
+// A carrier looks like ordinary chatter iff every token is a mundane cover word. This is the
+// deniability check — NOT a safety guarantee (see the hard wall above).
+function looksMundane(carrier) {
+  if (typeof carrier !== 'string') return { ok: false, why: 'carrier must be a string' };
+  const words = carrier.trim().split(/\s+/).filter((w) => w.length > 0);
+  if (words.length === 0) return { ok: true, mundane: false, why: 'empty' };
+  const all = words.every((w) => COVER.includes(w));
+  return { ok: true, mundane: all };
+}
+// ⟦KERNEL-END⟧
+
+const $ = (id) => document.getElementById(id);
+function doHide() {
+  const r = conceal($('secret').value, $('key').value);
+  if (!r.ok) { $('carrier').textContent = ''; $('mundane').innerHTML = '<span class="no">' + r.why + '</span>'; return; }
+  $('carrier').textContent = r.carrier;
+  $('rcarrier').value = r.carrier;          // wire it straight into the reveal box for the demo
+  const m = looksMundane(r.carrier);
+  $('mundane').innerHTML = m.mundane ? '<span class="ok">✓ reads as ordinary words</span>' : '<span class="no">not fully mundane</span>';
+}
+function doReveal(key) {
+  const r = reveal($('rcarrier').value, key);
+  $('revealed').innerHTML = r.ok ? ('reading with this key: “' + r.secret.replace(/</g, '&lt;') + '”') : ('<span class="no">' + r.why + '</span>');
+}
+$('hide').addEventListener('click', doHide);
+$('reveal').addEventListener('click', () => doReveal($('rkey').value));
+$('wrong').addEventListener('click', () => { $('rkey').value = 'a-different-key'; doReveal('a-different-key'); });
+doHide();
+</script>
+</body>
+</html>
